@@ -160,6 +160,33 @@ class FactorUtils:
             )
         return series.groupby(level='symbol').apply(ts_rank).droplevel(0)
     
+    
+    # # 向量化计算df中所有列n日滚动窗口内的百分位排名
+    # @staticmethod
+    # def TS_RANK(df: pd.DataFrame, window: int = 20) -> pd.Series :
+    #     """
+    #     Calculate time df rank
+    #     Returns rank normalized to [0, 1] range, 0 means earliest, 1 means latest
+    #     """
+        
+    #     # 转换为numpy数组进行计算
+    #     values = df.values
+    #     n_rows, n_cols = values.shape # 获取df的行数和列数
+    #     result = np.full_like(values, np.nan, dtype=float) # 创建一个与df形状相同，数据类型为float的数组，用于存储结果
+
+    #     # 对每个值计算其在窗口中的排名
+    #     for col in range(n_cols):
+    #         for i in range(window-1, n_rows):
+    #             window_data = values[i-window+1:i+1, col] # 获取当前列的窗口数据
+    #             current_value = values[i, col] # 获取当前列的当前值
+                
+    #             # 计算百分位排名
+    #             result[i, col] = np.mean(window_data <= current_value) 
+    #             # 窗口数据中小于或等于当前值的比例即为百分位排名
+    #             # 时间复杂度O(n_rows × n_cols × window)
+    #             # 仅需一次I/O操作   
+    #     return pd.DataFrame(result, index=df.index, columns=df.columns)
+
     @staticmethod
     def DELTA(series: pd.Series, period: int = 1) -> pd.Series:
         """Calculate difference"""
