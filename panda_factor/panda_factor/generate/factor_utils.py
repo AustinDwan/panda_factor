@@ -163,7 +163,7 @@ class FactorUtils:
     
     # # 向量化计算df中所有列n日滚动窗口内的百分位排名
     # @staticmethod
-    # def TS_RANK(df: pd.DataFrame, window: int = 20) -> pd.Series :
+    # def TS_RANK(df: pd.DataFrame, window: int = 20) -> pd.DataFrame :
     #     """
     #     Calculate time df rank
     #     Returns rank normalized to [0, 1] range, 0 means earliest, 1 means latest
